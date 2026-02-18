@@ -1,3 +1,5 @@
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+
 export default function Input({
   value,
   onChange,
@@ -5,36 +7,27 @@ export default function Input({
   onSearch,
   showButton = true,
 }) {
-  return (
-    <div className="w-full max-w-sm min-w-[200px]">
-      <div className="relative flex items-center gap-2">
-        {/* Search Icon */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
-        >
-          <path
-            fillRule="evenodd"
-            d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
-            clipRule="evenodd"
-          />
-        </svg>
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && onSearch) onSearch();
+  };
 
-        {/* Search Input */}
+  return (
+    <div className="w-full max-w-md relative">
+      <div className="relative flex items-center">
+        <MagnifyingGlassIcon className="absolute left-3.5 w-5 h-5 text-gray-400 pointer-events-none" />
+
         <input
           value={value}
           onChange={onChange}
+          onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+          className="w-full bg-white text-gray-800 text-sm font-medium placeholder:text-gray-400 border border-gray-200 rounded-xl pl-11 pr-24 py-3 transition-all duration-300 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 hover:border-gray-300 shadow-sm"
         />
 
-        {/* Search Button (optional) */}
         {showButton && (
           <button
             onClick={onSearch}
-            className="bg-purple-600 text-white px-3 py-1 rounded-md hover:bg-purple-500 transition"
+            className="absolute right-1.5 bg-gradient-to-r from-purple-600 to-violet-500 text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:from-purple-700 hover:to-violet-600 transition-all duration-300 shadow-sm active:scale-95"
           >
             Search
           </button>

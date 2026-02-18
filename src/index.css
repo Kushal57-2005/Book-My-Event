@@ -1,1 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
+
+/* ── Base (cannot be Tailwind utility classes) ── */
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #fafafa;
+  }
+  ::selection {
+    background: rgba(124, 58, 237, 0.2);
+    color: #4c1d95;
+  }
+  ::-webkit-scrollbar { display: none; }
+  html {
+    -ms-overflow-style: none;   /* IE / Edge */
+    scrollbar-width: none;      /* Firefox */
+  }
+}
+
+/* ── Keyframes (Tailwind v4 @theme not needed, used via @utility) ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes seatPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.5); }
+  50%      { box-shadow: 0 0 12px 3px rgba(139, 92, 246, 0.3); }
+}
+
+@utility animate-fadeInUp    { animation: fadeInUp 0.6s ease-out both; }
+@utility animate-fadeIn      { animation: fadeIn 0.4s ease-out both; }
+@utility animate-scaleIn     { animation: scaleIn 0.3s ease-out both; }
+@utility animate-slideDown   { animation: slideDown 0.35s ease-out both; }
+@utility animate-slideInRight { animation: slideInRight 0.35s ease-out both; }
+@utility animate-seatPulse   { animation: seatPulse 1.5s ease-in-out infinite; }
+
+/* ── Swiper third-party overrides (cannot be Tailwind) ── */
+.swiper-button-next,
+.swiper-button-prev {
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  text-align: center;
+  width: 36px !important;
+  height: 36px !important;
+  z-index: 10 !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 15px !important;
+  font-weight: 700;
+}
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 0.5 !important;
+  transition: all 0.3s ease !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 28px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(90deg, #7c3aed, #a855f7) !important;
+}
