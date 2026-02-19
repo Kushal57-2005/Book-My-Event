@@ -11,9 +11,11 @@ import "swiper/css/effect-fade";
 import { useEffect, useState } from "react";
 import { useWatchlist } from "../context/useWatchlist";
 
+
 export default function HeroSection() {
   const [events, setEvents] = useState([]);
   const { isInWatchlist, toggleWatchlist } = useWatchlist();
+
 
   useEffect(() => {
     fetch("/data/events.json")
@@ -59,6 +61,7 @@ export default function HeroSection() {
 
             const finalDate = `${datePart} • ${event.time}`;
             const saved = isInWatchlist(event.id);
+
 
             return (
               <SwiperSlide key={event.id}>

@@ -32,6 +32,7 @@ export default function EventDetails({ event, onClose }) {
   const finalDate = `${datePart} • ${event.time}`;
   const seatsAvailable = Number(event.seatAvailable ?? 0);
   const saved = isInWatchlist(event.id);
+
   const seatsFilled = event.seatCount ? event.seatCount - seatsAvailable : 0;
   const filledPercent = event.seatCount
     ? Math.round((seatsFilled / event.seatCount) * 100)
@@ -185,6 +186,8 @@ export default function EventDetails({ event, onClose }) {
                 <HeartOutline className="w-5 h-5" />
               )}
             </button>
+
+
           </div>
         </div>
       </div>

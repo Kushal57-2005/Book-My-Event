@@ -42,6 +42,7 @@ export default function EventsCard({ event }) {
               <HeartOutline className="w-4 h-4 text-white" />
             )}
           </button>
+
           <div className="absolute bottom-3 right-3">
             {isPaid ? (
               <span className="bg-gradient-to-r from-purple-600 to-violet-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
