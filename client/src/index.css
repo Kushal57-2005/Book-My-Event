@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+/* ── Base ── */
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; width: 100%; }
+  body {
+    font-family: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #fbfbf9; /* Architectural Warm Ivory */
+    color: #121316;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  #root { width: 100%; }
+  ::selection {
+    background: rgba(212, 175, 55, 0.25);
+    color: #121316;
+  }
+  ::-webkit-scrollbar { display: none; }
+  html {
+    -ms-overflow-style: none;   /* IE / Edge */
+    scrollbar-width: none;      /* Firefox */
+  }
+}
+
+/* ── 3D Utilities ── */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* ── Keyframes & Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+@keyframes seatPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+  50%      { box-shadow: 0 0 14px 4px rgba(212, 175, 55, 0.3); }
+}
+
+@utility animate-fadeInUp    { animation: fadeInUp 0.6s ease-out both; }
+@utility animate-fadeIn      { animation: fadeIn 0.4s ease-out both; }
+@utility animate-scaleIn     { animation: scaleIn 0.3s ease-out both; }
+@utility animate-slideDown   { animation: slideDown 0.35s ease-out both; }
+@utility animate-slideInRight { animation: slideInRight 0.35s ease-out both; }
+@utility animate-floatSlow   { animation: floatSlow 6s ease-in-out infinite; }
+@utility animate-seatPulse   { animation: seatPulse 1.5s ease-in-out infinite; }
+
+/* ── Swiper third-party overrides ── */
+.swiper-button-next,
+.swiper-button-prev {
+  background: rgba(18, 19, 22, 0.75) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  text-align: center;
+  width: 32px !important;
+  height: 32px !important;
+  z-index: 10 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #121316 !important;
+  transform: scale(1.08);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 11px !important;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 42px !important;
+    height: 42px !important;
+  }
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 15px !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: #a1a1aa !important;
+  opacity: 0.4 !important;
+  transition: all 0.3s ease !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 999px !important;
+  background: #d4af37 !important; /* Champagne Gold */
+}
+
